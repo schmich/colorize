@@ -1,0 +1,23 @@
+{
+    "name": "schmich/colorize",
+    "description": "PHP terminal text colorization and styling",
+    "homepage": "https://github.com/schmich/colorize",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Chris Schmich",
+        "email": "schmch@gmail.com",
+        "homepage": "https://github.com/schmich",
+        "role": "Developer"
+      }
+    ],
+    "autoload": {
+      "files": ["src/Colorize.php"]
+    },
+    "require": {
+        "php": "^5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5"
+    }
+}
