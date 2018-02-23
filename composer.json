@@ -1,6 +1,6 @@
 {
     "name": "schmich/colorize",
-    "description": "PHP terminal text colorization and styling",
+    "description": "ANSI colorization and styling for terminal text",
     "homepage": "https://github.com/schmich/colorize",
     "license": "MIT",
     "authors": [
