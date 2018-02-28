@@ -6,6 +6,9 @@ namespace Colorize;
 
 class Colored
 {
+  /**
+   * @internal
+   */
   static function instance() {
     static $instance = null;
     if (!$instance) {
@@ -18,6 +21,9 @@ class Colored
     $this->set('');
   }
 
+  /**
+   * @internal
+   */
   function set($str) {
     $this->str = $str;
     $this->fg = null;
@@ -189,30 +195,38 @@ class Colored
     return "3$color";
   }
 
+  private static function brightForeground($color) {
+    return "9$color";
+  }
+
   private static function background($color) {
     return "4$color";
   }
 
-  const ANSI_OFF       = '0';
-  const ANSI_LIGHT     = '1';
-  const ANSI_DARK      = '2';
-  const ANSI_ITALIC    = '3';
-  const ANSI_UNDERLINE = '4';
-  const ANSI_BLINK     = '5';
-  const ANSI_SWAP      = '7';
-  const ANSI_HIDE      = '8';
-  const ANSI_STRIKE    = '9'; // TODO (not widely supported)
-  const ANSI_SHOW      = '28';
+  private static function brightBackground($color) {
+    return "10$color";
+  }
 
-  const ANSI_BLACK     = '0';
-  const ANSI_RED       = '1';
-  const ANSI_GREEN     = '2';
-  const ANSI_YELLOW    = '3';
-  const ANSI_BLUE      = '4';
-  const ANSI_MAGENTA   = '5';
-  const ANSI_CYAN      = '6';
-  const ANSI_WHITE     = '7';
-  const ANSI_DEFAULT   = '9';
+  private const ANSI_OFF       = '0';
+  private const ANSI_LIGHT     = '1';
+  private const ANSI_DARK      = '2';
+  private const ANSI_ITALIC    = '3';
+  private const ANSI_UNDERLINE = '4';
+  private const ANSI_BLINK     = '5';
+  private const ANSI_SWAP      = '7';
+  private const ANSI_HIDE      = '8';
+  private const ANSI_STRIKE    = '9'; // TODO (not widely supported)
+  private const ANSI_SHOW      = '28';
+
+  private const ANSI_BLACK     = '0';
+  private const ANSI_RED       = '1';
+  private const ANSI_GREEN     = '2';
+  private const ANSI_YELLOW    = '3';
+  private const ANSI_BLUE      = '4';
+  private const ANSI_MAGENTA   = '5';
+  private const ANSI_CYAN      = '6';
+  private const ANSI_WHITE     = '7';
+  private const ANSI_DEFAULT   = '9';
 }
 
 function colorize($str) {
@@ -227,10 +241,16 @@ function dark($str) {
   return colorize($str)->dark();
 }
 
+/**
+ * Italic text. Not widely supported. Sometimes treated like swap.
+ */
 function italic($str) {
   return colorize($str)->italic();
 }
 
+/**
+ * Underline text.
+ */
 function underline($str) {
   return colorize($str)->underline();
 }
@@ -243,78 +263,135 @@ function swap($str) {
   return colorize($str)->swap();
 }
 
+/**
+ * Hide the text. It appears as blank space. Not widely supported.
+ */
 function hide($str) {
   return colorize($str)->hide();
 }
 
+/**
+ * Black text.
+ */
 function black($str) {
   return colorize($str)->black();
 }
 
+/**
+ * Red text.
+ */
 function red($str) {
   return colorize($str)->red();
 }
 
+/**
+ * Green text.
+ */
 function green($str) {
   return colorize($str)->green();
 }
 
+/**
+ * Yellow text.
+ */
 function yellow($str) {
   return colorize($str)->yellow();
 }
 
+/**
+ * Blue text.
+ */
 function blue($str) {
   return colorize($str)->blue();
 }
 
+/**
+ * Magenta text.
+ */
 function magenta($str) {
   return colorize($str)->magenta();
 }
 
+/**
+ * Cyan text.
+ */
 function cyan($str) {
   return colorize($str)->cyan();
 }
 
+/**
+ * White text.
+ */
 function white($str) {
   return colorize($str)->white();
 }
 
+/**
+ * Standard (terminal default) text.
+ */
 function standard($str) {
   return colorize($str)->standard();
 }
 
+/**
+ * Black background.
+ */
 function onBlack($str) {
   return colorize($str)->onBlack();
 }
 
+/**
+ * Red background.
+ */
 function onRed($str) {
   return colorize($str)->onRed();
 }
 
+/**
+ * Green background.
+ */
 function onGreen($str) {
   return colorize($str)->onGreen();
 }
 
+/**
+ * Yellow background.
+ */
 function onYellow($str) {
   return colorize($str)->onYellow();
 }
 
+/**
+ * Blue background.
+ */
 function onBlue($str) {
   return colorize($str)->onBlue();
 }
 
+/**
+ * Magenta background.
+ */
 function onMagenta($str) {
   return colorize($str)->onMagenta();
 }
 
+/**
+ * Cyan background.
+ */
 function onCyan($str) {
   return colorize($str)->onCyan();
 }
 
+/**
+ * White background.
+ */
 function onWhite($str) {
   return colorize($str)->onWhite();
 }
 
+/**
+ * Standard (terminal default) background.
+ */
 function onStandard($str) {
   return colorize($str)->onStandard();
 }

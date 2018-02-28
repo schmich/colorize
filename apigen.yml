@@ -1,0 +1,6 @@
+parameters:
+    visibilityLevels: [public]
+    annotationGroups: []
+    title: "schmich/colorize"
+    baseUrl: ""
+    overwrite: false
