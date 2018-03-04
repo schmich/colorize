@@ -167,10 +167,16 @@ class Colored
     return $this;
   }
 
+  /**
+   * Returns the styled string. Alias for `string`. Allows csting with (string).
+   */
   function __toString() {
     return $this->string();
   }
 
+  /**
+   * Returns the styled string.
+   */
   function string() {
     $styles = [];
     if ($this->fg !== null) {
