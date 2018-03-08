@@ -78,92 +78,172 @@ class Colored
   }
 
   function black() {
-    $this->fg = self::ANSI_BLACK;
+    $this->fg = self::foreground(self::ANSI_BLACK);
     return $this;
   }
 
   function red() {
-    $this->fg = self::ANSI_RED;
+    $this->fg = self::foreground(self::ANSI_RED);
     return $this;
   }
 
   function green() {
-    $this->fg = self::ANSI_GREEN;
+    $this->fg = self::foreground(self::ANSI_GREEN);
     return $this;
   }
 
   function yellow() {
-    $this->fg = self::ANSI_YELLOW;
+    $this->fg = self::foreground(self::ANSI_YELLOW);
     return $this;
   }
 
   function blue() {
-    $this->fg = self::ANSI_BLUE;
+    $this->fg = self::foreground(self::ANSI_BLUE);
     return $this;
   }
 
   function magenta() {
-    $this->fg = self::ANSI_MAGENTA;
+    $this->fg = self::foreground(self::ANSI_MAGENTA);
     return $this;
   }
 
   function cyan() {
-    $this->fg = self::ANSI_CYAN;
+    $this->fg = self::foreground(self::ANSI_CYAN);
     return $this;
   }
 
   function white() {
-    $this->fg = self::ANSI_WHITE;
+    $this->fg = self::foreground(self::ANSI_WHITE);
     return $this;
   }
 
   function standard() {
-    $this->fg = self::ANSI_DEFAULT;
+    $this->fg = self::foreground(self::ANSI_DEFAULT);
+    return $this;
+  }
+
+  function brightBlack() {
+    $this->fg = self::brightForeground(self::ANSI_BLACK);
+    return $this;
+  }
+
+  function brightRed() {
+    $this->fg = self::brightForeground(self::ANSI_RED);
+    return $this;
+  }
+
+  function brightGreen() {
+    $this->fg = self::brightForeground(self::ANSI_GREEN);
+    return $this;
+  }
+
+  function brightYellow() {
+    $this->fg = self::brightForeground(self::ANSI_YELLOW);
+    return $this;
+  }
+
+  function brightBlue() {
+    $this->fg = self::brightForeground(self::ANSI_BLUE);
+    return $this;
+  }
+
+  function brightMagenta() {
+    $this->fg = self::brightForeground(self::ANSI_MAGENTA);
+    return $this;
+  }
+
+  function brightCyan() {
+    $this->fg = self::brightForeground(self::ANSI_CYAN);
+    return $this;
+  }
+
+  function brightWhite() {
+    $this->fg = self::brightForeground(self::ANSI_WHITE);
     return $this;
   }
 
   function onBlack() {
-    $this->bg = self::ANSI_BLACK;
+    $this->bg = self::background(self::ANSI_BLACK);
     return $this;
   }
 
   function onRed() {
-    $this->bg = self::ANSI_RED;
+    $this->bg = self::background(self::ANSI_RED);
     return $this;
   }
 
   function onGreen() {
-    $this->bg = self::ANSI_GREEN;
+    $this->bg = self::background(self::ANSI_GREEN);
     return $this;
   }
 
   function onYellow() {
-    $this->bg = self::ANSI_YELLOW;
+    $this->bg = self::background(self::ANSI_YELLOW);
     return $this;
   }
 
   function onBlue() {
-    $this->bg = self::ANSI_BLUE;
+    $this->bg = self::background(self::ANSI_BLUE);
     return $this;
   }
 
   function onMagenta() {
-    $this->bg = self::ANSI_MAGENTA;
+    $this->bg = self::background(self::ANSI_MAGENTA);
     return $this;
   }
 
   function onCyan() {
-    $this->bg = self::ANSI_CYAN;
+    $this->bg = self::background(self::ANSI_CYAN);
     return $this;
   }
 
   function onWhite() {
-    $this->bg = self::ANSI_WHITE;
+    $this->bg = self::background(self::ANSI_WHITE);
     return $this;
   }
 
   function onStandard() {
-    $this->bg = self::ANSI_DEFAULT;
+    $this->bg = self::background(self::ANSI_DEFAULT);
+    return $this;
+  }
+
+  function onBrightBlack() {
+    $this->bg = self::brightBackground(self::ANSI_BLACK);
+    return $this;
+  }
+ 
+  function onBrightRed() {
+    $this->bg = self::brightBackground(self::ANSI_RED);
+    return $this;
+  }
+ 
+  function onBrightGreen() {
+    $this->bg = self::brightBackground(self::ANSI_GREEN);
+    return $this;
+  }
+
+  function onBrightYellow() {
+    $this->bg = self::brightBackground(self::ANSI_YELLOW);
+    return $this;
+  }
+
+  function onBrightBlue() {
+    $this->bg = self::brightBackground(self::ANSI_BLUE);
+    return $this;
+  }
+
+  function onBrightMagenta() {
+    $this->bg = self::brightBackground(self::ANSI_MAGENTA);
+    return $this;
+  }
+
+  function onBrightCyan() {
+    $this->bg = self::brightBackground(self::ANSI_CYAN);
+    return $this;
+  }
+
+  function onBrightWhite() {
+    $this->bg = self::brightBackground(self::ANSI_WHITE);
     return $this;
   }
 
@@ -180,11 +260,11 @@ class Colored
   function string() {
     $styles = [];
     if ($this->fg !== null) {
-      $styles []= self::foreground($this->fg);
+      $styles []= $this->fg;
     }
 
     if ($this->bg !== null) {
-      $styles []= self::background($this->bg);
+      $styles []= $this->bg;
     }
 
     $styles = array_merge($styles, $this->format);
@@ -340,6 +420,62 @@ function standard($str) {
 }
 
 /**
+ * Bright black text.
+ */
+function brightBlack($str) {
+  return colorize($str)->brightBlack();
+}
+
+/**
+ * Bright red text.
+ */
+function brightRed($str) {
+  return colorize($str)->brightRed();
+}
+
+/**
+ * Bright green text.
+ */
+function brightGreen($str) {
+  return colorize($str)->brightGreen();
+}
+
+/**
+ * Bright yellow text.
+ */
+function brightYellow($str) {
+  return colorize($str)->brightYellow();
+}
+
+/**
+ * Bright blue text.
+ */
+function brightBlue($str) {
+  return colorize($str)->brightBlue();
+}
+
+/**
+ * Bright magenta text.
+ */
+function brightMagenta($str) {
+  return colorize($str)->brightMagenta();
+}
+
+/**
+ * Bright cyan text.
+ */
+function brightCyan($str) {
+  return colorize($str)->brightCyan();
+}
+
+/**
+ * Bright white text.
+ */
+function brightWhite($str) {
+  return colorize($str)->brightWhite();
+}
+
+/**
  * Black background.
  */
 function onBlack($str) {
@@ -400,4 +536,60 @@ function onWhite($str) {
  */
 function onStandard($str) {
   return colorize($str)->onStandard();
+}
+
+/**
+ * Bright black background.
+ */
+function onBrightBlack($str) {
+  return colorize($str)->onBrightBlack();
+}
+
+/**
+ * Bright red background.
+ */
+function onBrightRed($str) {
+  return colorize($str)->onBrightRed();
+}
+
+/**
+ * Bright green background.
+ */
+function onBrightGreen($str) {
+  return colorize($str)->onBrightGreen();
+}
+
+/**
+ * Bright yellow background.
+ */
+function onBrightYellow($str) {
+  return colorize($str)->onBrightYellow();
+}
+
+/**
+ * Bright blue background.
+ */
+function onBrightBlue($str) {
+  return colorize($str)->onBrightBlue();
+}
+
+/**
+ * Bright magenta background.
+ */
+function onBrightMagenta($str) {
+  return colorize($str)->onBrightMagenta();
+}
+
+/**
+ * Bright cyan background.
+ */
+function onBrightCyan($str) {
+  return colorize($str)->onBrightCyan();
+}
+
+/**
+ * Bright white background.
+ */
+function onBrightWhite($str) {
+  return colorize($str)->onBrightWhite();
 }
