@@ -37,13 +37,13 @@ class Colored
     return $this;
   }
 
-  function light() {
-    $this->format []= self::ANSI_LIGHT;
+  function bold() {
+    $this->format []= self::ANSI_BOLD;
     return $this;
   }
 
-  function dark() {
-    $this->format []= self::ANSI_DARK;
+  function faint() {
+    $this->format []= self::ANSI_FAINT;
     return $this;
   }
 
@@ -214,8 +214,8 @@ class Colored
   }
 
   private const ANSI_OFF       = '0';
-  private const ANSI_LIGHT     = '1';
-  private const ANSI_DARK      = '2';
+  private const ANSI_BOLD      = '1';
+  private const ANSI_FAINT     = '2';
   private const ANSI_ITALIC    = '3';
   private const ANSI_UNDERLINE = '4';
   private const ANSI_BLINK     = '5';
@@ -239,12 +239,12 @@ function colorize($str) {
   return Colored::instance()->set($str);
 }
 
-function light($str) {
-  return colorize($str)->light();
+function bold($str) {
+  return colorize($str)->bold();
 }
 
-function dark($str) {
-  return colorize($str)->dark();
+function faint($str) {
+  return colorize($str)->faint();
 }
 
 /**
